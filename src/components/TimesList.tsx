@@ -4,6 +4,8 @@ import { SwimmingTime } from '../types/swimming';
 import { formatTime, formatDate } from '../utils/formatters';
 import { TimeEntryForm } from './TimeEntryForm';
 import { updateSwimmingTime, deleteSwimmingTime } from '../utils/storage';
+import { ShareButton } from './ShareButton';
+import { createShareableTime } from '../utils/sharing';
 
 interface TimesListProps {
   times: SwimmingTime[];
@@ -86,6 +88,10 @@ export function TimesList({ times, onUpdate }: TimesListProps) {
                 )}
               </div>
               <div className="flex items-center space-x-2 ml-4">
+                <ShareButton 
+                  result={createShareableTime(time)}
+                  className="text-xs px-2 py-1"
+                />
                 <button
                   onClick={() => setEditingId(time.id)}
                   className="p-2 text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-colors duration-200"

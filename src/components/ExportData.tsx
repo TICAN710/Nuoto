@@ -3,6 +3,7 @@ import { Download, FileText, Calendar } from 'lucide-react';
 import { getSwimmingTimes, getWorkouts } from '../utils/storage';
 import { formatTime, formatDate } from '../utils/formatters';
 import { ImportData } from './ImportData';
+import { CloudBackup } from './CloudBackup';
 
 interface ExportDataProps {
   onDataUpdate?: () => void;
@@ -156,6 +157,9 @@ export function ExportData({ onDataUpdate }: ExportDataProps) {
 
       {/* Import Section */}
       <ImportData onImportComplete={() => onDataUpdate?.()} />
+
+      {/* Cloud Backup Section */}
+      <CloudBackup />
 
       {/* Data Summary */}
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">

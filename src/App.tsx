@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { Moon, Sun, Waves, BarChart3, Clock, FileDown } from 'lucide-react';
+import { Moon, Sun, Waves, BarChart3, Clock, FileDown, Target } from 'lucide-react';
 import { Dashboard } from './components/Dashboard';
 import { TimesTracker } from './components/TimesTracker';
 import { TrainingLog } from './components/TrainingLog';
 import { ExportData } from './components/ExportData';
+import { Goals } from './components/Goals';
 import { useTheme } from './hooks/useTheme';
 
-type Tab = 'dashboard' | 'times' | 'training' | 'export';
+type Tab = 'dashboard' | 'times' | 'training' | 'goals' | 'export';
 
 const tabs = [
   { id: 'dashboard' as Tab, label: 'Dashboard', icon: BarChart3 },
   { id: 'times' as Tab, label: 'Swimming Times', icon: Clock },
   { id: 'training' as Tab, label: 'Training Log', icon: Waves },
+  { id: 'goals' as Tab, label: 'Goals', icon: Target },
   { id: 'export' as Tab, label: 'Export Data', icon: FileDown },
 ];
 
@@ -35,6 +37,8 @@ function App() {
         return <TimesTracker />;
       case 'training':
         return <TrainingLog />;
+      case 'goals':
+        return <Goals />;
       case 'export':
         return <ExportData />;
       default:

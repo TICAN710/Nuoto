@@ -4,6 +4,8 @@ import { Workout } from '../types/training';
 import { formatDate } from '../utils/formatters';
 import { WorkoutForm } from './WorkoutForm';
 import { updateWorkout, deleteWorkout } from '../utils/storage';
+import { ShareButton } from './ShareButton';
+import { createShareableWorkout } from '../utils/sharing';
 
 interface WorkoutsListProps {
   workouts: Workout[];
@@ -85,6 +87,10 @@ export function WorkoutsList({ workouts, onUpdate }: WorkoutsListProps) {
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
+                  <ShareButton 
+                    result={createShareableWorkout(workout)}
+                    className="text-xs px-2 py-1"
+                  />
                   <button
                     onClick={() => setEditingId(workout.id)}
                     className="p-2 text-gray-500 hover:text-teal-600 dark:text-gray-400 dark:hover:text-teal-400 hover:bg-teal-50 dark:hover:bg-teal-900/20 rounded-lg transition-colors duration-200"
